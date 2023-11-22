@@ -307,7 +307,7 @@ def Dijkstra(problem):
     cost = {}
 
     start = problem.getStartState()
-    queue.push((start, 'Undefined', 0), 0)
+    queue.push((start, 'Undefined', 0),0)
     visited[start] = 'Undefined'
     cost[start] = 0
     if problem.isGoalState(start):
