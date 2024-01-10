@@ -40,9 +40,9 @@ def colorToVector(color):
     return list(map(lambda x: int(x, 16) / 256.0, [color[1:3], color[3:5], color[5:7]]))
 
 if _Windows:
-    _canvas_tfonts = ['times new roman', 'lucida console']
+    _canvas_tfonts = ['helvetica', 'lucida console']
 else:
-    _canvas_tfonts = ['times', 'lucidasans-24']
+    _canvas_tfonts = ['futura', 'lucidasans-24']
     pass # XXX need defaults here
 
 def sleep(secs):

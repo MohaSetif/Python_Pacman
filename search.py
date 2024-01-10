@@ -336,6 +336,87 @@ def Dijkstra(problem):
 
     return solution
 
+def greedy(problem):
+    visited = {}
+    queue = util.PriorityQueue()
+    parents = {}
+    solution = []
+    cost = {}
+
+    start = problem.getStartState()
+    queue.push((start, 'Undefined', 0),0)
+    visited[start] = 'Undefined'
+    cost[start] = 0
+    if problem.isGoalState(start):
+        return solution
+    
+    goal = False
+    
+    while (queue.isEmpty() != True and goal != True):
+        node = queue.pop()
+        visited[node[0]] = node[1]
+        if problem.isGoalState(node[0]):
+            node_sol = node[0]
+            goal = True
+            break
+
+        for child in problem.expand(node[0]):
+            priority = child[2]
+            if child[0] not in cost or priority < cost[child[0]]:
+                cost[child[0]] = priority
+                parents[child[0]] = node[0]
+                queue.push(child, priority)
+    
+    while node_sol in parents:
+        solution.insert(0, visited[node_sol])
+        node_sol = parents[node_sol]
+
+    return solution
+
+def depthLimitedSearch(problem, limit #= 30
+                       ):
+    visited = {}
+    parents = {}
+    solution = []
+    stack = util.Stack()
+
+    start = problem.getStartState()
+    stack.push((start, 'Undefined', 0))
+    visited[start] = 'Undefined'
+    if problem.isGoalState(start):
+        return solution
+    
+    goal = False
+    node_sol = None
+
+    while not stack.isEmpty() and not goal:
+        node = stack.pop()
+        visited[node[0]] = node[1]
+        if problem.isGoalState(node[0]):
+            node_sol = node[0]
+            goal = True
+            break
+        if node[2] < limit:
+            for child in problem.expand(node[0]):
+                if child[0] not in visited:
+                    parents[child[0]] = node[0]
+                    stack.push((child[0], child[1], node[2] + 1))
+    
+    while node_sol in parents:
+        node_sol_prev = parents[node_sol]
+        solution.insert(0, visited[node_sol])
+        node_sol = node_sol_prev
+
+    return solution
+
+def iterativeDeepeningSearch(problem):
+    depth = 0
+    while True:
+        result = depthLimitedSearch(problem, depth)
+        if result:
+            return result
+        depth += 1
+
 
 # Abbreviations
 bfs = breadthFirstSearch
@@ -343,3 +424,6 @@ dfs = depthFirstSearch
 astar = aStarSearch
 ucs = uniformCostSearch
 dijk = Dijkstra
+grd = greedy
+dls = depthLimitedSearch
+ids = iterativeDeepeningSearch

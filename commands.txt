@@ -22,3 +22,9 @@ python pacman.py -l bigSearch -p ClosestDotSearchAgent -z .5 *** Method not impl
 python pacman.py -l bigSearch -p ApproximateSearchAgent -z .5 -q *** File "C:\Users\PC SOLUTION\Downloads\Pacman L3\Pacman\pacman.py", line 608, in loadAgent
     raise Exception('The agent ' + pacman + ' is not specified in any *Agents.py.')
 Exception: The agent ApproximateSearchAgent is not specified in any *Agents.py.
+
+
+python pacman.py -l mediumMaze -p SearchAgent -a fn=grd
+python pacman.py -l mediumMaze -p SearchAgent -a fn=dijk
+python pacman.py -l mediumMaze -p SearchAgent -a fn=dls
+python pacman.py -l mediumMaze -p SearchAgent -a fn=ids
