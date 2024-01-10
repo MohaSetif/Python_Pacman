@@ -23,6 +23,7 @@ python pacman.py -l bigSearch -p ApproximateSearchAgent -z .5 -q *** File "C:\Us
     raise Exception('The agent ' + pacman + ' is not specified in any *Agents.py.')
 Exception: The agent ApproximateSearchAgent is not specified in any *Agents.py.
 
+-- You can change the size of the maze
 
 python pacman.py -l mediumMaze -p SearchAgent -a fn=grd
 python pacman.py -l mediumMaze -p SearchAgent -a fn=dijk
