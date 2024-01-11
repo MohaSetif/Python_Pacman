@@ -224,7 +224,7 @@ def uniformCostSearch(problem):
                 priority = node[2] + child[2]
                 if child[0] in cost.keys():
                     if cost[child[0]] <= priority:
-                        continue
+                        continue #if the cost which is lesser than the current priority is already in the dictionary, it skips it and search for new ones
                 queue.push((child[0], child[1], priority), priority)
                 cost[child[0]] = priority
                 parents[child[0]] = node[0]
@@ -373,7 +373,7 @@ def greedy(problem):
 
     return solution
 
-def depthLimitedSearch(problem, limit #= 30
+def depthLimitedSearch(problem, limit = 130
                        ):
     visited = {}
     parents = {}
